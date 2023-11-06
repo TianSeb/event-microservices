@@ -1,0 +1,6 @@
+group = 'com.microservices'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation 'org.twitter4j:twitter4j-core:4.1.1'
+}
