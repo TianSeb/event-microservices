@@ -1,8 +1,8 @@
-package com.microservices.twitertokafka.runner.impl;
+package com.microservices.twittertokafka.runner.impl;
 
-import com.microservices.twitertokafka.config.TwitterToKafkaServiceConfigData;
-import com.microservices.twitertokafka.listener.TwitterKafkaStatusListener;
-import com.microservices.twitertokafka.runner.StreamRunner;
+import com.microservices.appconfigdata.config.TwitterToKafkaServiceConfigData;
+import com.microservices.twittertokafka.listener.TwitterKafkaStatusListener;
+import com.microservices.twittertokafka.runner.StreamRunner;
 import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,12 @@
 rootProject.name = 'microservices-demo'
 
 include 'twiter-to-kafka-service'
+include 'app-config-data'
+include 'kafka'
+include 'kafka:kafka-admin'
+findProject(':kafka:kafka-admin')?.name = 'kafka-admin'
+include 'kafka:kafka-model'
+findProject(':kafka:kafka-model')?.name = 'kafka-model'
+include 'kafka:kafka-producer'
+findProject(':kafka:kafka-producer')?.name = 'kafka-producer'
 

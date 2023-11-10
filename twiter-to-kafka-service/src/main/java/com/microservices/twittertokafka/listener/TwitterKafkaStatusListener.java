@@ -1,4 +1,4 @@
-package com.microservices.twitertokafka.listener;
+package com.microservices.twittertokafka.listener;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

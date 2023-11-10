@@ -1,0 +1,5 @@
+version: '3.7'
+
+include:
+  - common.yml
+  - kafka_cluster.yml

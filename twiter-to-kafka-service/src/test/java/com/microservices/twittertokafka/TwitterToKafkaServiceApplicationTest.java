@@ -1,4 +1,4 @@
-package com.microservices.twitertokafka;
+package com.microservices.twittertokafka;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

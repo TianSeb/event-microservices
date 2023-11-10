@@ -1,9 +1,9 @@
-package com.microservices.twitertokafka.runner.impl;
+package com.microservices.twittertokafka.runner.impl;
 
-import com.microservices.twitertokafka.config.TwitterToKafkaServiceConfigData;
-import com.microservices.twitertokafka.exception.TwitterToKafkaServiceException;
-import com.microservices.twitertokafka.listener.TwitterKafkaStatusListener;
-import com.microservices.twitertokafka.runner.StreamRunner;
+import com.microservices.appconfigdata.config.TwitterToKafkaServiceConfigData;
+import com.microservices.twittertokafka.exception.TwitterToKafkaServiceException;
+import com.microservices.twittertokafka.listener.TwitterKafkaStatusListener;
+import com.microservices.twittertokafka.runner.StreamRunner;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -63,7 +63,7 @@ public class MockKafkaStreamRunner implements StreamRunner {
     private static final String TWITTER_STATUS_DATE_FORMAT = "EEE MMM dd HH:mm:ss zzz yyyy";
 
     @Override
-    public void start() throws TwitterException {
+    public void start() {
         String[] keywords = twitterToKafkaServiceConfigData
                 .getTwitterKeywords().toArray(new String[0]);
         int minTweetLength = twitterToKafkaServiceConfigData
@@ -106,7 +106,7 @@ public class MockKafkaStreamRunner implements StreamRunner {
 
     private String getFormattedTweet(String[] keywords, int minTweetLength,
                                             int maxTweetLength) {
-        String[] params = new String[]{
+        String[] params = new String[] {
                 ZonedDateTime.now().format(DateTimeFormatter
                         .ofPattern(TWITTER_STATUS_DATE_FORMAT, Locale.ENGLISH)),
                 String.valueOf(ThreadLocalRandom.current().nextLong(Long.MAX_VALUE)),
@@ -124,13 +124,16 @@ public class MockKafkaStreamRunner implements StreamRunner {
         return tweet;
     }
 
-    private String getRandomTweetContent(String[] keywords, int minTweetLength, int maxTweetLength) {
+    private String getRandomTweetContent(String[] keywords, int minTweetLength,
+                                         int maxTweetLength) {
         StringBuilder tweet = new StringBuilder();
-        int tweetLength = RANDOM.nextInt(maxTweetLength - minTweetLength + 1) + minTweetLength;
+        int tweetLength = RANDOM.nextInt(maxTweetLength - minTweetLength + 1)
+                + minTweetLength;
         return constructRandomTweet(keywords, tweet, tweetLength);
     }
 
-    private String constructRandomTweet(String[] keywords, StringBuilder tweet, int tweetLength) {
+    private String constructRandomTweet(String[] keywords, StringBuilder tweet,
+                                        int tweetLength) {
         for (int i = 0; i < tweetLength; i++) {
             tweet.append(WORDS[RANDOM.nextInt(WORDS.length)]).append(" ");
             if (i == tweetLength / 2) {
