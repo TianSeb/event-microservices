@@ -1,19 +1,26 @@
 plugins {
-    id 'java'
+    id "com.github.davidmc24.gradle.plugin.avro" version "1.9.1"
 }
 
 group 'com.microservices'
 version '0.0.1-SNAPSHOT'
 
-repositories {
-    mavenCentral()
+bootJar {
+    enabled = false
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'org.apache.avro:avro:1.11.3'
 }
 
-test {
-    useJUnitPlatform()
+generateAvroJava {
+    source("src/main/resources/avro")
+    include("**/*.avsc")
+    outputDir = file("src/main/java")
 }
+//
+//generateAvroProtocol {
+//    source("src/main/resources/avro")
+//    include("**/*.avdl")
+//    outputDir = file("build/generated-main-avro-java")
+//}
