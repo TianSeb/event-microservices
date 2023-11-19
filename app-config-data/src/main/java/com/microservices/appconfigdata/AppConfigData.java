@@ -1,7 +1,6 @@
 package com.microservices.appconfigdata;
 
-public class Main {
+public class AppConfigData {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
     }
 }
